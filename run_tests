@@ -1,0 +1,10 @@
+#!/bin/sh
+SCRIPT=$(readlink -f "$0")
+SCRIPTPATH=$(dirname "$SCRIPT")
+echo "Working directory: $SCRIPTPATH"
+export PYTHONPATH="$SCRIPTPATH:$PYTHONPATH"
+export DJANGO_SETTINGS_MODULE="demo.settings"
+rm -rf tests/database.db
+python3 scripts/run_tests.py --cover-package=demo --with-coverage\
+    --cover-min-percentage 100 --cover-package=demo.controllers\
+    $@

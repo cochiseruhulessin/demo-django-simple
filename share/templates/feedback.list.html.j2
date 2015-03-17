@@ -1,0 +1,30 @@
+<!doctype html>
+<!--
+    vim: syntax=html
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Commentaren</title>
+</head>
+<body>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+            {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+            {{ message }}
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <table style="width:100%">
+        {% for dto in objects %}
+      <tr>{% for field in dto %}
+            <td>{{ field }}</td>
+        {% endfor %}
+      </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

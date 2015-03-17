@@ -1,0 +1,5 @@
+jinja2
+django>=1.7
+sqlalchemy
+django_jinja
+werkzeug
